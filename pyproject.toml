@@ -1,0 +1,62 @@
+[project]
+name = "leoric-kb-ai-huggingface"
+version = "0.1.0"
+description = "Knowledge Base AI system powered by Hugging Face transformers for semantic search and question answering"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    {name = "Leoric", email = "leoric@example.com"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "datasets>=4.4.1",
+    "torch>=2.9.1",
+    "transformers>=4.57.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+]
+huggingface = [
+    "transformers>=4.30.0",
+    "sentence-transformers>=2.2.0",
+    "torch>=2.0.0",
+]
+all = [
+    "leoric-kb-ai-huggingface[dev,huggingface]",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+
+[dependency-groups]
+dev = [
+    "jupyter",
+]
