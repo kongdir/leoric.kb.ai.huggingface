@@ -81,4 +81,5 @@ uv.lock
 # model result
 model_results/
 
-languages/
+src/leoric_kb_ai_huggingface/languages/*
+!src/leoric_kb_ai_huggingface/languages/spa-eng.zip
