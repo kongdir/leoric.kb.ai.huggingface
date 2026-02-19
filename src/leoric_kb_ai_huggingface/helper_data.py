@@ -4,6 +4,7 @@ import zipfile
 import tempfile
 from pathlib import Path
 from typing import Optional
+import matplotlib.pyplot as plt
 
 # 导入 Rich 库的进度组件
 from rich.progress import (
@@ -126,3 +127,30 @@ def download_and_unzip(
                 print("🧹 临时ZIP文件已清理")
             except OSError:
                 pass
+
+def show_images(images, titles=None, cols=2):
+    """
+    Displays a list of PIL images in a grid.
+
+    Args:
+        images (List): A list of the images (PIL format) to display.
+        titles (Tuple, optional): A tuple of titles for each image. Defaults to None.
+        cols (int, optional): The number of columns in the display grid. Defaults to 2.
+    """
+    # Calculate the number of rows needed to display all images
+    num_images = len(images)
+    rows = (num_images + cols - 1) // cols
+
+    # Create a figure with an appropriate size
+    plt.figure(figsize=(cols * 5, rows * 5))
+
+    # Loop through the images and display them
+    for i, image in enumerate(images):
+        plt.subplot(rows, cols, i + 1)
+        if titles and i < len(titles):
+            plt.title(titles[i])
+        plt.imshow(image)
+        plt.axis('off')
+
+    plt.tight_layout()
+    plt.show()

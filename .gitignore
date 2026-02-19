@@ -80,3 +80,5 @@ uv.lock
 
 # model result
 model_results/
+
+languages/
